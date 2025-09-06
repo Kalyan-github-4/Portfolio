@@ -28,7 +28,7 @@ const Projects = () => {
       techStack: ['React', 'OpenWeather API', 'Chart.js', 'Tailwind CSS'],
       liveLink: 'https://weather-dashboard-demo.vercel.app',
       githubLink: 'https://github.com/kalyanmanna/weather-dashboard',
-      featured: false
+      featured: true
     },
     {
       title: 'Portfolio Website',
@@ -37,7 +37,7 @@ const Projects = () => {
       techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
       liveLink: 'https://kalyanmanna.dev',
       githubLink: 'https://github.com/kalyanmanna/portfolio',
-      featured: false
+      featured: true
     }
   ];
 
