@@ -29,7 +29,7 @@ const Hero = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center fade-in">
           {/* Greeting */}
-          <p className="text-lg text-muted-foreground mb-4 font-medium">
+          <p className="text-lg text-muted-foreground mb-4 font-medium "style={{ opacity: 0.6 }}>
             Hello, I'm
           </p>
           
@@ -46,12 +46,12 @@ const Hero = () => {
           </h2>
           
           {/* Tagline */}
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed" style={{ opacity: 0.6 }}>
             Crafting clean and modern web experiences with passion for innovation and attention to detail
           </p>
           
           {/* Location */}
-          <p className="text-lg text-muted-foreground mb-8">
+          <p className="text-lg text-muted-foreground mb-8" style={{ opacity: 0.6 }}>
             📍 Based in India
           </p>
 
@@ -60,7 +60,7 @@ const Hero = () => {
             <Button
               onClick={scrollToProjects}
               size="lg"
-              className="bg-hero-gradient hover:opacity-90 transition-opacity text-primary-foreground font-semibold px-8 py-3 hover-glow"
+              className="bg-hero-gradient hover:opacity-90 transition-opacity text-primary-foreground font-semibold px-8 py-3 hover-glow"style={{ color: 'black' }}
             >
               View My Work
               <ArrowDown className="ml-2 h-5 w-5" />
@@ -69,7 +69,7 @@ const Hero = () => {
             <Button
               variant="outline"
               size="lg"
-              className="border-primary/50 text-foreground hover:bg-primary/10 px-8 py-3"
+              className="border-primary/50 text-foreground hover:bg-primary/10 px-8 py-3" style={{backgroundColor: "#0F1729"}}
               onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
               Get In Touch
@@ -85,6 +85,7 @@ const Hero = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-full bg-card/50 hover:bg-card transition-all duration-300 hover-glow border border-border/50"
+                 style={{backgroundColor: "#0F1729"}}
                 aria-label={social.label}
               >
                 <social.icon className="h-6 w-6 text-muted-foreground hover:text-primary transition-colors" />
@@ -95,13 +96,12 @@ const Hero = () => {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-muted-foreground rounded-full mt-2 animate-pulse"></div>
+       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="w-6 h-10 border-2 border-muted-foreground/50 rounded-full flex justify-center"  style={{backgroundColor: "#0F1729"}}>
+          <div className="w-1 h-3 bg-muted-foreground/50 rounded-full mt-2 animate-pulse" style={{backgroundColor: "#94A3B8"}}></div>
         </div>
       </div>
     </section>
   );
 };
-
 export default Hero;
