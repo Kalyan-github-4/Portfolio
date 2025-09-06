@@ -1,6 +1,11 @@
 import { Code, Database, Globe, Server, Smartphone, Palette } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 
 const Skills = () => {
+const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+
   const skillCategories = [
     {
       title: 'Frontend Development',
@@ -47,9 +52,30 @@ const Skills = () => {
       color: 'from-pink-500 to-rose-600'
     }
   ];
+ 
+  // Intersection Observer to detect when section is in view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
 
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
   return (
-    <section id="skills" className="py-20">
+    <section id="skills" className="py-20" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -60,11 +86,15 @@ const Skills = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 ">
           {skillCategories.map((category, categoryIndex) => (
             <div
               key={categoryIndex}
               className="p-8 rounded-2xl bg-card-gradient border border-border/50 hover-glow group"
+              style={{
+                background: "linear-gradient(135deg, hsl(222 84% 4.9%) 0%, hsl(217.2 32.6% 20%) 100%)"
+              }}
+              
             >
               {/* Category Header */}
               <div className="flex items-center mb-6">
@@ -78,7 +108,7 @@ const Skills = () => {
               <div className="space-y-4">
                 {category.skills.map((skill, skillIndex) => (
                   <div key={skillIndex} className="space-y-2">
-                    <div className="flex justify-between items-center">
+                     <div className="flex justify-between items-center">
                       <span className="text-foreground font-medium">{skill.name}</span>
                       <span className="text-sm text-muted-foreground">{skill.level}%</span>
                     </div>
@@ -86,8 +116,11 @@ const Skills = () => {
                     {/* Progress Bar */}
                     <div className="h-2 bg-muted rounded-full overflow-hidden">
                       <div
-                        className={`h-full bg-gradient-to-r ${category.color} rounded-full transition-all duration-1000 ease-out`}
-                        style={{ width: `${skill.level}%` }}
+                        className={`h-full bg-gradient-to-r ${category.color} rounded-full transition-all duration-1500 ease-out`}
+                        style={{ 
+                          width: isVisible ? `${skill.level}%` : '0%',
+                          transitionDelay: `${categoryIndex * 300 + skillIndex * 150}ms`
+                        }}
                       ></div>
                     </div>
                   </div>
@@ -118,6 +151,15 @@ const Skills = () => {
           </div>
         </div>
       </div>
+       {/* Animation Styles */}
+      <style>
+        {`
+          .transition-all {
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          }
+        `}
+      </style>
     </section>
   );
 };
