@@ -1,8 +1,13 @@
-import { Code, Database, Globe, Server, Smartphone, Palette } from 'lucide-react';
+import { Code, Database, Server, Smartphone } from 'lucide-react';
+import { Globe } from '../motion/Globe';
+import { WandSparkles } from '../motion/WandSparkles';
+import { SlidersVertical } from '../motion/SlidersVertical';
+import { Grape } from '../motion/Grape';
 import { useEffect, useRef, useState } from 'react';
+import { InfiniteMovingCards } from '../animation/InfiniteMovingCards';
 
 const Skills = () => {
-const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
 
@@ -20,7 +25,7 @@ const [isVisible, setIsVisible] = useState(false);
     },
     {
       title: 'Backend Development',
-      icon: Server,
+      icon: SlidersVertical,
       skills: [
         { name: 'Node.js', level: 82 },
         { name: 'Express.js', level: 80 },
@@ -31,7 +36,7 @@ const [isVisible, setIsVisible] = useState(false);
     },
     {
       title: 'Database & Tools',
-      icon: Database,
+      icon: Grape,
       skills: [
         { name: 'MongoDB', level: 80 },
         { name: 'Git/GitHub', level: 90 },
@@ -42,7 +47,7 @@ const [isVisible, setIsVisible] = useState(false);
     },
     {
       title: 'Design & UX',
-      icon: Palette,
+      icon: WandSparkles,
       skills: [
         { name: 'Responsive Design', level: 92 },
         { name: 'UI/UX Principles', level: 78 },
@@ -52,7 +57,15 @@ const [isVisible, setIsVisible] = useState(false);
       color: 'from-pink-500 to-rose-600'
     }
   ];
- 
+
+    const additionalSkills = [
+    "TypeScript", "Next.js", "Redux", "Radix", "Axios", "ShadCN-UI", "Tailwind", 
+    "Bootstrap", "Material UI", "Motion", "Webpack", "Python", "MySQL", 
+    "PostgreSQL", "AWS", "Vercel", "Netlify", "Firebase", "Git & GitHub", 
+    "NPM", "ESLint", "Postman", "Figma", "Windows"
+  ];
+
+
   // Intersection Observer to detect when section is in view
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -94,7 +107,7 @@ const [isVisible, setIsVisible] = useState(false);
               style={{
                 background: "linear-gradient(135deg, hsl(222 84% 4.9%) 0%, hsl(217.2 32.6% 20%) 100%)"
               }}
-              
+
             >
               {/* Category Header */}
               <div className="flex items-center mb-6">
@@ -108,16 +121,16 @@ const [isVisible, setIsVisible] = useState(false);
               <div className="space-y-4">
                 {category.skills.map((skill, skillIndex) => (
                   <div key={skillIndex} className="space-y-2">
-                     <div className="flex justify-between items-center">
+                    <div className="flex justify-between items-center">
                       <span className="text-foreground font-medium">{skill.name}</span>
                       <span className="text-sm text-muted-foreground">{skill.level}%</span>
                     </div>
-                    
+
                     {/* Progress Bar */}
                     <div className="h-2 bg-muted rounded-full overflow-hidden">
                       <div
                         className={`h-full bg-gradient-to-r ${category.color} rounded-full transition-all duration-1500 ease-out`}
-                        style={{ 
+                        style={{
                           width: isVisible ? `${skill.level}%` : '0%',
                           transitionDelay: `${categoryIndex * 300 + skillIndex * 150}ms`
                         }}
@@ -131,15 +144,19 @@ const [isVisible, setIsVisible] = useState(false);
         </div>
 
         {/* Additional Skills */}
-        <div className="mt-16 text-center">
+        {/* <div className="mt-16 text-center">
           <h3 className="text-2xl font-semibold mb-8 text-foreground">
             Additional Technologies
           </h3>
           <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
             {[
-              'TypeScript', 'Next.js', 'Redux', 'Axios', 'Styled Components',
-              'Material-UI', 'Bootstrap', 'Sass', 'Webpack', 'NPM',
-              'Linux', 'Docker', 'AWS', 'Vercel', 'Netlify'
+              'TypeScript', 'Next.js', 'Redux', 'Radix', 'Axios', 'ShadCN-UI', 'Tailwind', 'Bootstrap', 'Material UI', 'Motion', 'Webpack',
+              'Python',
+              'MySQL', 'PostgreSQL',
+              'AWS', 'Vercel', 'Netlify', 'Firebase',
+              'Git & GitHub', 'NPM', 'ESLint', 'Postman', 'Figma',
+              'Windows'
+
             ].map((tech, index) => (
               <span
                 key={index}
@@ -149,9 +166,19 @@ const [isVisible, setIsVisible] = useState(false);
               </span>
             ))}
           </div>
+        </div> */}
+        <div className="mt-16 text-center">
+          <h3 className="text-2xl font-semibold mb-8 text-foreground">
+            Additional Technologies
+          </h3>
+          <InfiniteMovingCards 
+            items={additionalSkills} 
+            direction="right" 
+            speed="slow" 
+          />
         </div>
       </div>
-       {/* Animation Styles */}
+      {/* Animation Styles */}
       <style>
         {`
           .transition-all {
