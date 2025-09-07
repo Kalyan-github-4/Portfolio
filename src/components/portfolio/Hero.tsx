@@ -1,5 +1,6 @@
-import { ArrowDown, Github, Linkedin, Mail, HeartHandshake, Twitter } from 'lucide-react';
+import { ArrowDown, Github, Linkedin, Mail, Twitter } from 'lucide-react';
 import { Button } from '../../components/ui/button';
+import { HeartHandshake } from '../motion/HeartHandshake';
 
 const Hero = () => {
   const scrollToProjects = () => {
@@ -83,7 +84,7 @@ const Hero = () => {
             <Button
               onClick={scrollToProjects}
               size="lg"
-              className="bg-hero-gradient hover:opacity-90 transition-opacity text-primary-foreground font-semibold px-8 py-3 hover-glow"
+              className="bg-hero-gradient cursor-pointer hover:opacity-90 transition-opacity text-primary-foreground font-semibold px-8 py-3 hover-glow"
               style={{ color: 'white', borderRadius: '10px' }}
             >
               View My Work
@@ -93,14 +94,14 @@ const Hero = () => {
             <Button
               variant="outline"
               size="lg"
-              className="border-primary/50 text-foreground hover:bg-primary/10 px-8 py-3 transition-all duration-300 relative overflow-hidden group hover:scale-105"
+              className="border-primary/50 text-foreground hover:bg-primary/10 px-8 py-3 transition-all duration-300 relative overflow-hidden group hover:scale-105 cursor-pointer"
               style={{ backgroundColor: "#0F1729", borderRadius: '10px' }}
               onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
               {/* Hover effect elements */}
               <span className="absolute inset-0 bg-hero-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
               <span className="relative z-10 flex items-center">Get In Touch
-                <HeartHandshake className="ml-2 h-5 w-5" />
+                <HeartHandshake className="ml-2" />
                 </span> 
             </Button>
           </div>
