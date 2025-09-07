@@ -5,6 +5,9 @@ import { SlidersVertical } from '../motion/SlidersVertical';
 import { Grape } from '../motion/Grape';
 import { useEffect, useRef, useState } from 'react';
 import { InfiniteMovingCards } from '../animation/InfiniteMovingCards';
+import { CardSpotlight } from '../animation/CardSpotlight';
+import { CanvasRevealEffect } from '../animation/CanvasRevealEffect';
+import { SkillCategoryCard } from '../context/SkillsSpotLight';
 
 const Skills = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -101,82 +104,70 @@ const Skills = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 ">
           {skillCategories.map((category, categoryIndex) => (
-            <div
-              key={categoryIndex}
-              className="p-8 rounded-2xl bg-card-gradient border border-border/50 hover-glow group"
-              style={{
-                background: "linear-gradient(135deg, hsl(222 84% 4.9%) 0%, hsl(217.2 32.6% 20%) 100%)"
-              }}
+            // <div
+            //   key={categoryIndex}
+            //   className="p-8 rounded-2xl bg-card-gradient border border-border/50 hover-glow group"
+            //   style={{
+            //     background: "linear-gradient(135deg, hsl(222 84% 4.9%) 0%, hsl(217.2 32.6% 20%) 100%)"
+            //   }}
 
-            >
-              {/* Category Header */}
-              <div className="flex items-center mb-6">
-                <div className={`p-3 rounded-xl bg-gradient-to-r ${category.color} mr-4`}>
-                  <category.icon className="h-6 w-6 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground">{category.title}</h3>
-              </div>
+            // >
+            //   {/* Category Header */}
+            //   <div className="flex items-center mb-6">
+            //     <div className={`p-3 rounded-xl bg-gradient-to-r ${category.color} mr-4`}>
+            //       <category.icon className="h-6 w-6 text-white" />
+            //     </div>
+            //     <h3 className="text-xl font-semibold text-foreground">{category.title}</h3>
+            //   </div>
 
-              {/* Skills List */}
-              <div className="space-y-4">
-                {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex} className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="text-foreground font-medium">{skill.name}</span>
-                      <span className="text-sm text-muted-foreground">{skill.level}%</span>
-                    </div>
+            //   {/* Skills List */}
+            //   <div className="space-y-4">
+            //     {category.skills.map((skill, skillIndex) => (
+            //       <div key={skillIndex} className="space-y-2">
+            //         <div className="flex justify-between items-center">
+            //           <span className="text-foreground font-medium">{skill.name}</span>
+            //           <span className="text-sm text-muted-foreground">{skill.level}%</span>
+            //         </div>
 
-                    {/* Progress Bar */}
-                    <div className="h-2 bg-muted rounded-full overflow-hidden">
-                      <div
-                        className={`h-full bg-gradient-to-r ${category.color} rounded-full transition-all duration-1500 ease-out`}
-                        style={{
-                          width: isVisible ? `${skill.level}%` : '0%',
-                          transitionDelay: `${categoryIndex * 300 + skillIndex * 150}ms`
-                        }}
-                      ></div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            //         {/* Progress Bar */}
+            //         <div className="h-2 bg-muted rounded-full overflow-hidden">
+            //           <div
+            //             className={`h-full bg-gradient-to-r ${category.color} rounded-full transition-all duration-1500 ease-out`}
+            //             style={{
+            //               width: isVisible ? `${skill.level}%` : '0%',
+            //               transitionDelay: `${categoryIndex * 300 + skillIndex * 150}ms`
+            //             }}
+            //           ></div>
+            //         </div>
+            //       </div>
+            //     ))}
+            //   </div>
+            // </div>
+
+            <SkillCategoryCard 
+      key={categoryIndex} 
+      category={category} 
+      categoryIndex={categoryIndex}
+      isVisible={isVisible}
+    />
           ))}
         </div>
 
-        {/* Additional Skills */}
-        {/* <div className="mt-16 text-center">
-          <h3 className="text-2xl font-semibold mb-8 text-foreground">
+        {/* Additional Skills with Spotlight Effect */}
+        <div className="mt-16">
+          <h3 className="text-2xl font-semibold mb-8 text-foreground text-center">
             Additional Technologies
           </h3>
-          <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
-            {[
-              'TypeScript', 'Next.js', 'Redux', 'Radix', 'Axios', 'ShadCN-UI', 'Tailwind', 'Bootstrap', 'Material UI', 'Motion', 'Webpack',
-              'Python',
-              'MySQL', 'PostgreSQL',
-              'AWS', 'Vercel', 'Netlify', 'Firebase',
-              'Git & GitHub', 'NPM', 'ESLint', 'Postman', 'Figma',
-              'Windows'
-
-            ].map((tech, index) => (
-              <span
-                key={index}
-                className="px-4 py-2 bg-secondary/50 text-secondary-foreground rounded-lg border border-border/50 hover:bg-secondary transition-colors duration-200 hover:scale-105 transform"
-              >
-                {tech}
-              </span>
-            ))}
+          
+          <div className="relative">
+            <InfiniteMovingCards 
+              items={additionalSkills} 
+              direction="right" 
+              speed="slow" 
+            />
           </div>
-        </div> */}
-        <div className="mt-16 text-center">
-          <h3 className="text-2xl font-semibold mb-8 text-foreground">
-            Additional Technologies
-          </h3>
-          <InfiniteMovingCards 
-            items={additionalSkills} 
-            direction="right" 
-            speed="slow" 
-          />
         </div>
+
       </div>
       {/* Animation Styles */}
       <style>
