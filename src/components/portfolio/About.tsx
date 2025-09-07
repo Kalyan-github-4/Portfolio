@@ -5,22 +5,26 @@ const About = () => {
     {
       icon: Code,
       title: 'Clean Code',
-      description: 'Writing maintainable and scalable code'
+      description: 'Writing maintainable and scalable code',
+       color: 'from-blue-500 to-purple-600'
     },
     {
       icon: Globe,
       title: 'Modern Web',
-      description: 'Building responsive, fast web applications'
+      description: 'Building responsive, fast web applications',
+      color: 'from-green-500 to-teal-600'
     },
     {
       icon: Coffee,
       title: 'Continuous Learning',
-      description: 'Always exploring new technologies'
+      description: 'Always exploring new technologies',
+      color: 'from-orange-500 to-red-600'
     },
     {
       icon: Heart,
       title: 'User-Focused',
-      description: 'Creating delightful user experiences'
+      description: 'Creating delightful user experiences',
+      color: 'from-pink-500 to-rose-600'
     }
   ];
 
@@ -65,7 +69,8 @@ const About = () => {
                 {['HTML', 'CSS', 'JavaScript', 'React', 'Node.js', 'Express.js', 'MongoDB'].map((tech) => (
                   <span
                     key={tech}
-                    className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium border border-primary/20"
+                    className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium border border-primary/20
+                    transition-all duration-300 hover:bg-primary hover:text-background hover:scale-105 cursor-pointer" 
                   >
                     {tech}
                   </span>
@@ -80,9 +85,15 @@ const About = () => {
               <div
                 key={index}
                 className="p-6 rounded-xl bg-card-gradient border border-border/50 hover-glow group"
+                 style={{
+                  background: "linear-gradient(135deg, hsl(222 84% 4.9%) 0%, hsl(217.2 32.6% 20%) 100%)"
+                }}
               >
                 <div className="mb-4">
-                  <item.icon className="h-8 w-8 text-primary group-hover:scale-110 transition-transform duration-300" />
+                  <div className={`p-2 rounded-lg bg-gradient-to-r ${item.color} inline-block`}>
+                  <item.icon className="h-6 w-6 text-white" />
+
+                  </div>
                 </div>
                 <h4 className="font-semibold mb-2 text-foreground">{item.title}</h4>
                 <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
