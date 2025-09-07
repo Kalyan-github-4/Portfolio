@@ -1,8 +1,12 @@
-import {LoaderPinwheel } from '../motion/LoaderPinwheel';
-import {Disc3} from '../motion/Disc3';
+import { LoaderPinwheel } from '../motion/LoaderPinwheel';
+import { Disc3 } from '../motion/Disc3';
 import { Atom } from '../motion/Atom';
 import { CircleDotDashed } from '../motion/CircleDotDashed';
 import { Fan } from '../motion/Fan';
+import { Download } from '../motion/Download';
+import { Button } from '../ui/button';
+import { AboutCategoryCards } from '../context/AboutSpotLight';
+
 
 const About = () => {
   const highlights = [
@@ -10,10 +14,10 @@ const About = () => {
       icon: Disc3,
       title: 'Clean Code',
       description: 'Writing maintainable and scalable code',
-       color: 'from-blue-500 to-purple-600'
+      color: 'from-blue-500 to-purple-600'
     },
     {
-      icon: LoaderPinwheel ,
+      icon: LoaderPinwheel,
       title: 'Modern Web',
       description: 'Building responsive, fast web applications',
       color: 'from-green-500 to-teal-600'
@@ -49,20 +53,20 @@ const About = () => {
           <div className="space-y-6">
             <div className="prose prose-lg max-w-none">
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Hello! I'm Kalyan Manna, a passionate web developer based in India with a love for 
+                Hello! I'm Kalyan Manna, a passionate web developer based in India with a love for
                 creating beautiful, functional, and user-friendly websites and applications.
               </p>
-              
+
               <p className="text-lg text-muted-foreground leading-relaxed">
-                My journey in web development started with curiosity about how websites work, and it has 
-                evolved into a deep passion for crafting digital experiences that solve real-world problems. 
-                I believe in writing clean, maintainable Disc3 and staying up-to-date with the latest 
+                My journey in web development started with curiosity about how websites work, and it has
+                evolved into a deep passion for crafting digital experiences that solve real-world problems.
+                I believe in writing clean, maintainable code and staying up-to-date with the latest
                 technologies and best practices.
               </p>
-              
+
               <p className="text-lg text-muted-foreground leading-relaxed">
-                When I'm not coding, you can find me exploring new technologies, contributing to 
-                open-source projects, or sharing knowledge with the developer community. I'm always 
+                When I'm not coding, you can find me exploring new technologies, contributing to
+                open-source projects, or sharing knowledge with the developer community. I'm always
                 excited to take on new challenges and collaborate on interesting projects.
               </p>
             </div>
@@ -74,7 +78,7 @@ const About = () => {
                   <span
                     key={tech}
                     className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium border border-primary/20
-                    transition-all duration-300 hover:bg-primary hover:text-background hover:scale-105 cursor-pointer" 
+                    transition-all duration-300 hover:bg-primary hover:text-background hover:scale-105 cursor-pointer"
                   >
                     {tech}
                   </span>
@@ -86,24 +90,51 @@ const About = () => {
           {/* Highlights Grid */}
           <div className="grid grid-cols-2 gap-6">
             {highlights.map((item, index) => (
-              <div
-                key={index}
-                className="p-6 rounded-xl bg-card-gradient border border-border/50 hover-glow group"
-                 style={{
-                  background: "linear-gradient(135deg, hsl(222 84% 4.9%) 0%, hsl(217.2 32.6% 20%) 100%)"
-                }}
-              >
-                <div className="mb-4">
-                  <div className={`p-2 rounded-lg bg-gradient-to-r ${item.color} inline-block`}>
-                  <item.icon className="h-6 w-6 text-white" />
+              // <div
+              //   key={index}
+              //   className="p-6 rounded-xl bg-card-gradient border border-border/50 hover-glow group"
+              //    style={{
+              //     background: "linear-gradient(135deg, hsl(222 84% 4.9%) 0%, hsl(217.2 32.6% 20%) 100%)"
+              //   }}
+              // >
+              //   <div className="mb-4">
+              //     <div className={`p-2 rounded-lg bg-gradient-to-r ${item.color} inline-block`}>
+              //     <item.icon className="h-6 w-6 text-white" />
 
+              //     </div>
+              //   </div>
+              //   <h4 className="font-semibold mb-2 text-foreground">{item.title}</h4>
+              //   <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+              // </div>
+              <AboutCategoryCards
+                key={index}
+                radius={250}
+                className="hover-glow group"
+              ><div className="mb-4">
+                  <div className={`p-2 rounded-lg bg-gradient-to-r ${item.color} inline-block`}>
+                    <item.icon className="h-6 w-6 text-white" />
                   </div>
                 </div>
                 <h4 className="font-semibold mb-2 text-foreground">{item.title}</h4>
                 <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
-              </div>
+              </AboutCategoryCards>
             ))}
           </div>
+
+
+        </div>
+
+        <div className="text-center mt-12">
+          <Button
+            variant="outline"
+            size="lg"
+            className="border-primary/50 text-foreground hover:bg-primary/10 px-8 py-3 transition-all duration-300 relative overflow-hidden group hover:scale-105 cursor-pointer" style={{borderRadius: '10px'}}
+          ><span className="absolute inset-0 bg-hero-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+          <span
+          className="relative z-10 flex items-center">
+            <Download/>Download My Resume
+          </span>
+          </Button>
         </div>
       </div>
     </section>
