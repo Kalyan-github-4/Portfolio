@@ -1,4 +1,4 @@
-import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowDown, Github, Linkedin, Mail, HeartHandshake, Twitter } from 'lucide-react';
 import { Button } from '../../components/ui/button';
 
 const Hero = () => {
@@ -12,7 +12,7 @@ const Hero = () => {
   const socialLinks = [
     { icon: Github, href: 'https://github.com/Kalyan-github-4', label: 'GitHub', hoverColor: '#333333' },
     { icon: Linkedin, href: 'www.linkedin.com/in/kalyan-manna', label: 'LinkedIn', hoverColor: '#0077B5' },
-    { icon: Mail, href: 'kalyanmanna439@gmail.com', label: 'Email', hoverColor: '#EA4335' },
+    { icon: Twitter, href: 'kalyanmanna439@gmail.com', label: 'Twitter', hoverColor: '#000000' },
   ];
 
   return (
@@ -99,7 +99,9 @@ const Hero = () => {
             >
               {/* Hover effect elements */}
               <span className="absolute inset-0 bg-hero-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-              <span className="relative z-10">Get In Touch</span>
+              <span className="relative z-10 flex items-center">Get In Touch
+                <HeartHandshake className="ml-2 h-5 w-5" />
+                </span> 
             </Button>
           </div>
 
