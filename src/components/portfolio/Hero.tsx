@@ -12,8 +12,8 @@ const Hero = () => {
 
   const socialLinks = [
     { icon: Github, href: 'https://github.com/Kalyan-github-4', label: 'GitHub', hoverColor: '#333333' },
-    { icon: Linkedin, href: 'www.linkedin.com/in/kalyan-manna', label: 'LinkedIn', hoverColor: '#0077B5' },
-    { icon: Twitter, href: 'kalyanmanna439@gmail.com', label: 'Twitter', hoverColor: '#000000' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/kalyan-manna-840861352/', label: 'LinkedIn', hoverColor: '#0077B5' },
+    { icon: Twitter, href: 'https://x.com/Kalyan_Manna_4', label: 'Twitter', hoverColor: '#000000' },
   ];
 
   return (
