@@ -60,6 +60,9 @@ const Projects = () => {
               className={`group relative rounded-2xl bg-card-gradient border border-border/50 overflow-hidden hover-glow ${
                 project.featured ? 'lg:grid-cols-2' : ''
               }`}
+              style={{
+                  background: "linear-gradient(135deg, hsl(222 84% 4.9%) 0%, hsl(217.2 32.6% 20%) 100%)"
+                }}
             >
               <div className={`${project.featured ? 'grid lg:grid-cols-2' : 'block'} min-h-[400px]`}>
                 {/* Project Image */}
