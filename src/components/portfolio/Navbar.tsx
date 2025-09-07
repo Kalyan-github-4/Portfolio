@@ -33,11 +33,10 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-background/90 backdrop-blur-3xl border-b border-border' 
-          : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? 'bg-background/90 backdrop-blur-3xl border-b border-border'
+        : 'bg-transparent'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -55,7 +54,18 @@ const Navbar = () => {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="text-muted-foreground hover:text-foreground transition-colors duration-200 font-medium"
+                 className="
+          text-muted-foreground
+          opacity-50
+          hover:opacity-100
+          hover:text-transparent
+          hover:bg-clip-text
+          hover:bg-[linear-gradient(135deg,hsl(250_100%_60%),hsl(280_100%_70%))]
+          transition-all duration-300 font-medium
+        "
+
+
+
                 >
                   {item.name}
                 </button>
@@ -83,7 +93,11 @@ const Navbar = () => {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="block w-full text-left px-3 py-2 text-muted-foreground hover:text-foreground transition-colors duration-200"
+                className="block w-full text-left px-3 py-2
+  text-transparent bg-clip-text bg-[hsl(var(--foreground))]
+  opacity-60 hover:opacity-100
+  hover:bg-hero-gradient
+  transition-all duration-300 font-medium"
                 >
                   {item.name}
                 </button>
