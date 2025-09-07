@@ -1,27 +1,31 @@
-import { Code, Coffee, Globe, Heart } from 'lucide-react';
+import {LoaderPinwheel } from '../motion/LoaderPinwheel';
+import {Disc3} from '../motion/Disc3';
+import { Atom } from '../motion/Atom';
+import { CircleDotDashed } from '../motion/CircleDotDashed';
+import { Fan } from '../motion/Fan';
 
 const About = () => {
   const highlights = [
     {
-      icon: Code,
+      icon: Disc3,
       title: 'Clean Code',
       description: 'Writing maintainable and scalable code',
        color: 'from-blue-500 to-purple-600'
     },
     {
-      icon: Globe,
+      icon: LoaderPinwheel ,
       title: 'Modern Web',
       description: 'Building responsive, fast web applications',
       color: 'from-green-500 to-teal-600'
     },
     {
-      icon: Coffee,
+      icon: Atom,
       title: 'Continuous Learning',
       description: 'Always exploring new technologies',
       color: 'from-orange-500 to-red-600'
     },
     {
-      icon: Heart,
+      icon: Fan,
       title: 'User-Focused',
       description: 'Creating delightful user experiences',
       color: 'from-pink-500 to-rose-600'
@@ -52,7 +56,7 @@ const About = () => {
               <p className="text-lg text-muted-foreground leading-relaxed">
                 My journey in web development started with curiosity about how websites work, and it has 
                 evolved into a deep passion for crafting digital experiences that solve real-world problems. 
-                I believe in writing clean, maintainable code and staying up-to-date with the latest 
+                I believe in writing clean, maintainable Disc3 and staying up-to-date with the latest 
                 technologies and best practices.
               </p>
               
