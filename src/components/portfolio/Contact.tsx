@@ -7,6 +7,8 @@ import { useToast } from '../../hooks/use-toast';
 
 const Contact = () => {
   const { toast } = useToast();
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -38,20 +40,24 @@ const Contact = () => {
     {
       icon: Mail,
       label: 'Email',
-      value: 'kalyan../..example.com',
-      href: 'mailto:kalyan../..example.com'
+      value: 'kalyanmanna439@gmail.com',
+      href: 'mailto:kalyanmanna439@gmail.com',
+      bgColor: '#EA4335'
+      
     },
     {
       icon: Phone,
       label: 'Phone',
-      value: '+91 98765 43210',
-      href: 'tel:+919876543210'
+      value: '+91 9883785143',
+      href: 'tel:+919883785143',
+      bgColor: '#34A853'
     },
     {
       icon: MapPin,
       label: 'Location',
       value: 'India',
-      href: '#'
+      href: '#',
+      bgColor: '#4285F4'
     }
   ];
 
@@ -60,19 +66,19 @@ const Contact = () => {
       icon: Github,
       label: 'GitHub',
       href: 'https://github.com/kalyanmanna',
-      color: 'hover:text-gray-600'
+      hoverColor: '#333333'
     },
     {
       icon: Linkedin,
       label: 'LinkedIn',
       href: 'https://linkedin.com/in/kalyanmanna',
-      color: 'hover:text-blue-600'
+      hoverColor: '#0077B5'
     },
     {
       icon: Twitter,
       label: 'Twitter',
       href: 'https://twitter.com/kalyanmanna',
-      color: 'hover:text-blue-400'
+      hoverColor: '#1DA1F2'
     }
   ];
 
@@ -104,7 +110,19 @@ const Contact = () => {
             <div className="space-y-6">
               {contactInfo.map((item, index) => (
                 <div key={index} className="flex items-center space-x-4">
-                  <div className="p-3 rounded-xl bg-primary/10 border border-primary/20">
+                  <div className="p-3 rounded-xl transition-all duration-300 cursor-pointer border border-border"
+                  style={{
+          backgroundColor: "#0F1729", // default bg
+          borderColor: "rgba(255,255,255,0.2)"
+        }}
+                  onMouseEnter={e => {
+          const el = e.currentTarget as HTMLDivElement;
+          el.style.backgroundColor = item.bgColor;
+        }}
+        onMouseLeave={e => {
+          const el = e.currentTarget as HTMLDivElement;
+          el.style.backgroundColor = "#0F1729"; // reset default bg
+        }}>
                     <item.icon className="h-6 w-6 text-primary" />
                   </div>
                   <div>
@@ -125,17 +143,27 @@ const Contact = () => {
               <h4 className="text-lg font-semibold mb-4 text-foreground">Follow Me</h4>
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (
+                  
+                  
                   <a
                     key={index}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`p-3 rounded-xl bg-card border border-border hover-glow transition-all duration-300 ${social.color}`}
+                    onMouseEnter={() => setHoveredIndex(index)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                    className={`p-3 rounded-xl bg-card border border-border hover-glow transition-all duration-300 cursor-pointer`}
+                    style={{
+             backgroundColor: hoveredIndex === index ? social.hoverColor : "#0F1729",
+  borderColor: hoveredIndex === index ? social.hoverColor : "rgba(255,255,255,0.2)"
+          }}
                     aria-label={social.label}
                   >
-                    <social.icon className="h-6 w-6" />
+                    <social.icon  className="h-6 w-6 transition-colors duration-300"
+          style={{ color: hoveredIndex === index ? "#fff" : "#9CA3AF" }} />
                   </a>
-                ))}
+                  
+))}
               </div>
             </div>
           </div>
@@ -172,7 +200,7 @@ const Contact = () => {
                   required
                   value={formData.email}
                   onChange={handleInputChange}
-                  placeholder="your.email../..example.com"
+                  placeholder="example@gmail.com"
                   className="bg-background/50 border-border/50 focus:border-primary"
                 />
               </div>
