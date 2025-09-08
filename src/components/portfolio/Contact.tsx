@@ -78,7 +78,7 @@ const Contact = () => {
       icon: Twitter,
       label: 'Twitter',
       href: 'https://twitter.com/kalyanmanna',
-      hoverColor: '#1DA1F2'
+      hoverColor: '#000000'
     }
   ];
 
