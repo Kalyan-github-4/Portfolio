@@ -20,7 +20,8 @@ const config: Config = {
         },
         primary: {
           DEFAULT: "hsl(var(--primary) / <alpha-value>)",
-          foreground: "hsl(var(--primary-foreground) / <alpha-value>)"
+          foreground: "hsl(var(--primary-foreground) / <alpha-value>)",
+          glow: 'hsl(var(--primary-glow))'
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary) / <alpha-value>)",
