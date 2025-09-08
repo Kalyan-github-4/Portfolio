@@ -91,19 +91,33 @@ const Hero = () => {
               <ArrowDown className="ml-2 h-5 w-5" />
             </Button>
 
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-primary/50 text-foreground hover:bg-primary/10 px-8 py-3 transition-all duration-300 relative overflow-hidden group hover:scale-105 cursor-pointer"
-              style={{ backgroundColor: "#0F1729", borderRadius: '10px' }}
-              onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              {/* Hover effect elements */}
-              <span className="absolute inset-0 bg-hero-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-              <span className="relative z-10 flex items-center">Get In Touch
-                <HeartHandshake className="ml-2" />
-                </span> 
-            </Button>
+           <Button
+  variant="outline"
+  size="lg"
+  className=" 
+    bg-[#0F1729] 
+    text-foreground 
+     hover:bg-[#4e46e51a] 
+    transition-all duration-300 
+    relative overflow-hidden 
+    group hover:scale-105 
+    cursor-pointer 
+    rounded-[10px]
+  "
+  style={{ 
+    border: "1px solid rgba(79, 70, 229, 0.3)" 
+  }}
+  onClick={() =>
+    document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })
+  }
+>
+  <span className="relative z-10 flex items-center">
+    Get In Touch
+    <HeartHandshake className="ml-2" />
+  </span>
+</Button>
+
+
           </div>
 
           {/* Social Links */}
@@ -117,14 +131,16 @@ const Hero = () => {
                 className="p-3 rounded-full bg-card/50 hover:bg-card transition-all duration-300 hover-glow border border-border/50"
                 style={{ backgroundColor: "#0F1729" }}
                 aria-label={social.label}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = social.hoverColor;
+                  e.currentTarget.style.borderColor = social.hoverColor;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "#0F1729";
+                  e.currentTarget.style.borderColor = "hsl(var(--border) / 0.5)";
+                }}
               >
-                <social.icon className="h-6 w-6 text-muted-foreground hover:text-primary transition-colors" />
-                <style>{`
-                  a:nth-child(${index + 1}):hover {
-                    background-color: ${social.hoverColor} !important;
-                    border-color: ${social.hoverColor} !important;
-                  }
-                `}</style>
+                <social.icon className="h-6 w-6 text-muted-foreground transition-colors" />
               </a>
             ))}
           </div>
