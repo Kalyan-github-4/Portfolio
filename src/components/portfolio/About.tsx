@@ -128,7 +128,16 @@ const About = () => {
           <Button
             variant="outline"
             size="lg"
-            className="border-primary/50 text-foreground hover:bg-primary/10 px-8 py-3 transition-all duration-300 relative overflow-hidden group hover:scale-105 cursor-pointer" style={{borderRadius: '10px'}}
+            className="text-foreground hover:bg-primary/10 px-8 py-3 transition-all duration-300 relative overflow-hidden group hover:scale-105 cursor-pointer" style={{borderRadius: '10px', border: '1px solid rgba(79, 70, 229, 0.3)'}}
+            onClick={() => {
+              const link = document.createElement('a')
+              link.href = '/Resume.pdf'
+              link.download = 'Kalyan_Manna_Resume.pdf'
+              document.body.appendChild(link)
+              link.click()
+              document.body.removeChild(link)
+            }}
+          
           ><span className="absolute inset-0 bg-hero-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
           <span
           className="relative z-10 flex items-center">
