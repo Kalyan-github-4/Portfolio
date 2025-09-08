@@ -26,7 +26,7 @@ const Projects = () => {
     {
       title: 'Weather Dashboard',
       description: 'A responsive weather application with location-based forecasts, interactive maps, and detailed weather analytics with beautiful visualizations.',
-      image: '/placeholder-project-3.jpg',
+      image: '/currency-convertor.png',
       techStack: ['React', 'OpenWeather API', 'Chart.js', 'Tailwind CSS'],
       liveLink: 'https://weather-dashboard-demo.vercel.app',
       githubLink: 'https://github.com/kalyanmanna/weather-dashboard',
@@ -35,7 +35,7 @@ const Projects = () => {
     {
       title: 'Portfolio Website',
       description: 'A modern, responsive portfolio website showcasing projects and skills with smooth animations and clean design principles.',
-      image: '/placeholder-project-4.jpg',
+      image: '/simon-game.png',
       techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
       liveLink: 'https://kalyanmanna.dev',
       githubLink: 'https://github.com/kalyanmanna/portfolio',
@@ -80,7 +80,7 @@ const Projects = () => {
 };
 
 // Separate component for each project card to prevent re-rendering issues
-const ProjectCard = ({ project }: { project: any }) => {
+const ProjectCard = ({ project }: { project }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
   const [imageSrc, setImageSrc] = useState('');
