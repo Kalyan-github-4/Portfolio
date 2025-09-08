@@ -4,9 +4,9 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: Github, href: 'https://github.com/kalyanmanna', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://linkedin.com/in/kalyanmanna', label: 'LinkedIn' },
-    { icon: Twitter, href: 'mailto:kalyan@example.com', label: 'Twitter' },
+    { icon: Github, href: 'https://github.com/Kalyan-github-4', label: 'GitHub', hoverColor: '#333333' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/kalyan-manna-840861352/', label: 'LinkedIn', hoverColor: '#0077B5' },
+    { icon: Twitter, href: 'https://x.com/Kalyan_Manna_4', label: 'Twitter', hoverColor: '#000000' },
   ];
 
   const quickLinks = [
@@ -67,6 +67,14 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="p-2 rounded-lg bg-secondary/50 hover:bg-secondary transition-all duration-300 hover-glow"
                   aria-label={social.label}
+                  onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = social.hoverColor;
+                  e.currentTarget.style.borderColor = social.hoverColor;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "#0F1729";
+                  e.currentTarget.style.borderColor = "hsl(var(--border) / 0.5)";
+                }}
                 >
                   <social.icon className="h-5 w-5 text-muted-foreground hover:text-primary transition-colors" />
                 </a>
